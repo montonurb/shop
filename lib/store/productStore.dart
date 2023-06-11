@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 import 'package:project_firebase/model/product.dart';
@@ -7,13 +9,11 @@ class ProductStore {
   final connection = Connection();
   late List<Product> products;
 
-  Future addProduct(
-      String name, String description, String price, String imageUrl) {
+  Future addProduct(String name, String description, String price) {
     final json = jsonEncode({
       "name": name,
       "description": description,
       "price": price,
-      "imageUrl": imageUrl,
     });
 
     return connection.addProduct(json);

@@ -1,5 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:project_firebase/model/product.dart';
 import 'package:project_firebase/store/productStore.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -13,7 +14,6 @@ class _AddProductPageState extends State<AddProductPage> {
   TextEditingController name = TextEditingController();
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
-  TextEditingController imageUrl = TextEditingController();
 
   final productStore = ProductStore();
   bool isLoading = false;
@@ -58,13 +58,6 @@ class _AddProductPageState extends State<AddProductPage> {
                     ),
                     keyboardType: TextInputType.number,
                   ),
-                  TextFormField(
-                    controller: imageUrl,
-                    decoration: const InputDecoration(
-                      labelText: "URL Imagem",
-                    ),
-                    keyboardType: TextInputType.text,
-                  ),
                   const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
@@ -74,7 +67,6 @@ class _AddProductPageState extends State<AddProductPage> {
                         name.text,
                         description.text,
                         price.text,
-                        imageUrl.text,
                       )
                           .catchError((error) {
                         return showDialog(
